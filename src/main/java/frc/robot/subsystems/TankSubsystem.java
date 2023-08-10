@@ -1,10 +1,6 @@
 package frc.robot.subsystems;
 
-import frc.robot.TankModule;
-import frc.robot.Constants;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.sensors.Pigeon2;
 
 public class TankSubsystem extends SubsystemBase
 	{
@@ -19,7 +15,7 @@ public class TankSubsystem extends SubsystemBase
 
 		}
 
-	public void drive(double speed, double otherSpeed)
+	public void drive(double leftSpeed, double rightSpeed)
 	{
 
 	}
