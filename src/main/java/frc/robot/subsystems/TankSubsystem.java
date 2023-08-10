@@ -8,14 +8,9 @@ import com.ctre.phoenix.sensors.Pigeon2;
 
 public class TankSubsystem extends SubsystemBase
 	{
-	public TankModule[] tankTreads;
-	public Pigeon2 gyro;
 
 	public TankSubsystem()
 		{
-			// gyro = new Pigeon2(Constants.gyroID);
-
-			// tankTreads = new TankModule[] {
 			// new TankModule(Constants.leftFrontID, Constants.leftRearID,
 			// Constants.leftFrontEncoder, Constants.leftRearEncoder),
 			// new TankModule(Constants.rightFrontID, Constants.rightRearID,
