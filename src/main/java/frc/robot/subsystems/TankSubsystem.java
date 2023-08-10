@@ -22,15 +22,6 @@ public class TankSubsystem extends SubsystemBase
 	public void drive(double speed, double otherSpeed)
 	{
 
-		// Swerve Implementation will look something like this with some
-		// odometry math above to calculate what values to pass
-		// for(TankModule tread : tankTreads) {
-		// tread.setDesiredState(speed);
-		// }
-
-		// for tank transmission we can simply do this for now
-		tankTreads[0].setDesiredState(speed);
-		tankTreads[1].setDesiredState(otherSpeed);
 	}
 
 	@Override
