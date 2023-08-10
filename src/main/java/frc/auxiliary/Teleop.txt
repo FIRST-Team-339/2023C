@@ -27,7 +27,7 @@
 // -----------------------------------------------------
 //
 // ====================================================================
-package frc.robot;
+package frc.auxiliary;
 
 import java.io.ObjectInputStream.GetField;
 

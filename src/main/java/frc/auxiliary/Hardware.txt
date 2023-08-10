@@ -12,7 +12,7 @@
 // NOTE: Please do not release this code without permission from
 // Team 339.
 // ====================================================================
-package frc.Hardware;
+package frc.auxiliary;
 
 import java.beans.Encoder;
 
