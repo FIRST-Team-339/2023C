@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.playingwithfusion.CANVenom;
 
@@ -71,11 +70,11 @@ public class ArmAssembly extends SubsystemBase{
             //Validate hold value
 
             //DOES NOT WORK
-            System.out.println("false");
+            // System.out.println("false");
             this.armRaiseMotor.set(Constants.TwentyThree.ARM_HOLD_SPEED);
             
         }else{
-            System.out.println("True");
+            // System.out.println("True");
             //Scaling arm raise and lower speed as a safety net for test on robot
             // refer to 2023 season code for calculation
             
