@@ -27,9 +27,18 @@ public final class Constants
             public static int LEFT_DRIVER_PORT = 0;
             public static int RIGHT_DRIVER_PORT  = 1;
 
+            public static int LEFT_OPERATOR_PORT = 2;
+            public static int RIGHT_OPERATOR_PORT = 3;
+
+            public static double JOYSTICK_DEADBAND = 0.2;
+            public static double ARM_DEADBAND = 0.2;
+
             /* Buttons */
-            public static int GEAR_UP_BUTTON = 10;
-            public static int GEAR_DOWN_BUTTON = 11;
+            public static int GEAR_UP_BUTTON = 1;
+            public static int GEAR_DOWN_BUTTON = 1;
+
+            public static int CLAW_FOWARD_BUTTON = 1;
+            public static int ARM_RAISED_BUTTON = 1;
         
             /* Motor Controllers */
             public static int LEFT_FRONT_DRIVE_ID = 0;
@@ -37,6 +46,23 @@ public final class Constants
             public static int RIGHT_FRONT_DRIVE_ID = 2;
             public static int RIGHT_REAR_DRIVE_ID = 3;
 
+            public static int ARM_RAISE_MOTOR_ID = 21;
+            public static int ARM_LENGTH_MOTOR_ID = 23;
+
+            /* Pneumatics  */
+            public static int CLAW_PISTON_FWD_PORT = 6;
+            public static int CLAW_PISTON_REV_PORT = 7;
+
+            public static int ARM_RAISE_FWD_PORT = 2;
+            public static int ARM_RAISE_REV_PORT = 3;
+
+            /* Gears */
+            public static int MAX_GEARS = 2;
+            public static double GEAR_ONE = 0.6;
+            public static double GEAR_TWO = 0.9;
+
+            /* Values */
+            public static double ARM_HOLD_SPEED = 0.02;
         }
 
         /*
