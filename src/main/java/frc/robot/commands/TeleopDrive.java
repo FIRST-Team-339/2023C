@@ -4,15 +4,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import java.util.function.DoubleSupplier;
 
 import frc.robot.subsystems.TankTransmission;
-import frc.robot.subsystems.TankTransmissionRemap;
 
 public class TeleopDrive extends CommandBase
 	{
-	private TankTransmissionRemap tank;
+	private TankTransmission tank;
 	DoubleSupplier leftDrive;
 	DoubleSupplier rightDrive;
 
-	public TeleopDrive(TankTransmissionRemap tank, DoubleSupplier leftDrive,
+	public TeleopDrive(TankTransmission tank, DoubleSupplier leftDrive,
 			DoubleSupplier rightDrive)
 		{
 			this.tank = tank;

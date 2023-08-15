@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
-import frc.robot.Modules.TankModule;
 import frc.HardwareInterfaces.Transmission.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
