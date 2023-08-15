@@ -1,27 +1,28 @@
 package frc.robot;
 
-
-enum year {
-                TWENTY_THREE, TWENTY_THREE_C
-            };
+enum year
+    {
+    TWENTY_THREE, TWENTY_THREE_C
+    };
 
 public final class Constants
     {
-/**
- * There is some possibilites here with the years being sub classes
- * Maybe we can have a method of some form that can return a reference to the specific year values
- * 
- * I am not sure of the java implementation, writing note to refresh conversation.
- * 
- */
+    /**
+     * There is some possibilites here with the years being sub classes Maybe we
+     * can have a method of some form that can return a reference to the
+     * specific year values
+     * 
+     * I am not sure of the java implementation, writing note to refresh
+     * conversation.
+     * 
+     */
 
+    /*
+     * 2023
+     */
 
-
-        /*
-         * 2023
-         */
-
-        public static final class TwentyThree{
+    public static final class TwentyThree
+        {
 
             /* Joysticks */
             public static int LEFT_DRIVER_PORT = 0;
@@ -65,30 +66,33 @@ public final class Constants
             public static double ARM_HOLD_SPEED = 0.02;
         }
 
-        /*
-         * 2023C 
-         */
-        public static final class TwentyThreeC{
+    /*
+     * 2023C
+     */
+    public static final class TwentyThreeC
+        {
 
         }
 
-        /*
-         * Determine which constants to use
-         */
+    /*
+     * Determine which constants to use
+     */
 
-        private static year currentYear = year.TWENTY_THREE;
+    private static year currentYear = year.TWENTY_THREE;
 
-        public static Object getCurrentConstants(){
-            
-            switch(currentYear){
-                case TWENTY_THREE:
-                    return new TwentyThree();
+    public static Object getCurrentConstants()
+    {
 
-                case TWENTY_THREE_C:
-                    return new TwentyThreeC();
+        switch (currentYear)
+            {
+            case TWENTY_THREE:
+                return new TwentyThree();
+
+            case TWENTY_THREE_C:
+                return new TwentyThreeC();
 
             }
-            return null;
-        }
+        return null;
+    }
 
     }

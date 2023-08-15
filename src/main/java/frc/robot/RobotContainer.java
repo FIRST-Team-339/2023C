@@ -7,7 +7,8 @@ import frc.robot.commands.ArmControl;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.*;
 
-public class RobotContainer {
+public class RobotContainer
+    {
     /* Constant Local */
     // Constants localConstants = Constants.getCurrentConstants();
     
@@ -49,10 +50,6 @@ public class RobotContainer {
 
         raiseArmButton.toggleOnTrue(Commands.runOnce(armAssembly::alternateArmRaised));
 
-        //While holding claw button, claw is forwad
-        //Noticed functionality, works every other time every single time
-        extendClawButton.toggleOnTrue(Commands.run(() -> armAssembly.setClawForward(true)));
-            extendClawButton.toggleOnFalse(Commands.run(() -> armAssembly.setClawForward(false)));
     }
 
 }
