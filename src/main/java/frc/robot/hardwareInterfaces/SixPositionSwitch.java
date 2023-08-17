@@ -47,6 +47,21 @@ public class SixPositionSwitch
         } // end constructor - overloaded
 
     /**
+     * Define a six-position switch with an array of six digital input ports.
+     *
+     * @param ports
+     */
+    public SixPositionSwitch(int[] ports)
+        {
+            position0 = new SingleThrowSwitch(ports[0]);
+            position1 = new SingleThrowSwitch(ports[1]);
+            position2 = new SingleThrowSwitch(ports[2]);
+            position3 = new SingleThrowSwitch(ports[3]);
+            position4 = new SingleThrowSwitch(ports[4]);
+            position5 = new SingleThrowSwitch(ports[5]);
+        } // end constructor - overloaded
+
+    /**
      * Define a six-position switch with six digital input ports. Extra
      * parameter to invert the switch.
      *
