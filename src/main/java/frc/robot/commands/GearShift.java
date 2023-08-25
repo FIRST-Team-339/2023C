@@ -3,8 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TankSubsystem;
 
-public class ShiftGear extends CommandBase
+public class GearShift extends CommandBase
     {
+    /* Gear Shift State */
     public static enum GearUpOrDown
         {
         UP, DOWN
@@ -13,7 +14,7 @@ public class ShiftGear extends CommandBase
     private TankSubsystem tankSubsystem;
     private GearUpOrDown gearState;
 
-    public ShiftGear(TankSubsystem tankSubsystem, GearUpOrDown gearState)
+    public GearShift(TankSubsystem tankSubsystem, GearUpOrDown gearState)
         {
             this.tankSubsystem = tankSubsystem;
             this.gearState = gearState;
