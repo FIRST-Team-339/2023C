@@ -8,14 +8,14 @@ import frc.robot.subsystems.CameraSubsystem;
 
 public class Camera extends CommandBase
     {
-    // Subsystem
+    /* Subsystem */
     private CameraSubsystem cameraSubsystem;
 
-    // USB Cameras
+    /* USB Cameras */
     private UsbCamera camera0;
     private UsbCamera camera1;
 
-    // USB Camera Servers
+    /* USB Camera Server */
     private VideoSink server;
 
     public Camera(CameraSubsystem cameraSubsystem, boolean usingTwoCameras)
@@ -38,7 +38,7 @@ public class Camera extends CommandBase
     @Override
     public void execute()
     {
-        /**
+        /*
          * Checks if camera 0 is enabled, and if so, switch the camera server to
          * display the second camera
          * 
@@ -53,7 +53,7 @@ public class Camera extends CommandBase
             cameraSubsystem.switchCamera(server, camera0);
             }
 
-        // Ends the command, as we have switched cameras!
+        // Ends the command, as we have switched cameras
         cancel();
     }
     }

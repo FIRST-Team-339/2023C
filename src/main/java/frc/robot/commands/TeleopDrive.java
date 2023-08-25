@@ -7,9 +7,12 @@ import frc.robot.subsystems.TankSubsystem;
 
 public class TeleopDrive extends CommandBase
 	{
+	/* Subsystem */
 	private TankSubsystem tankSubsystem;
-	DoubleSupplier leftDrive;
-	DoubleSupplier rightDrive;
+
+	/* Left + Right Drive */
+	private DoubleSupplier leftDrive;
+	private DoubleSupplier rightDrive;
 
 	public TeleopDrive(TankSubsystem tankSubsystem, DoubleSupplier leftDrive,
 			DoubleSupplier rightDrive)

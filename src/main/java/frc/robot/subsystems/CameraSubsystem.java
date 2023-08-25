@@ -7,11 +7,28 @@ import frc.robot.Constants.*;
 
 public class CameraSubsystem extends SubsystemBase
     {
-
+    /* No Constructor */
     public CameraSubsystem()
         {
         }
 
+    /**
+     * The {@code setCameraValues} method is to update the camera values such
+     * as:
+     * <ul>
+     * <li>Resolution</li>
+     * <li>Frames per Second (FPS)</li>
+     * <li>Compression rate</li>
+     * </ul>
+     * 
+     * The values can all be changed and set under {@link CameraConstants}
+     * 
+     * @param usbCamera
+     *            The {@link UsbCamera} to set the value(s) for
+     * @param server
+     *            The camera server ({@link VideoSink}) to update the value(s)
+     *            for
+     */
     public void setCameraValues(UsbCamera usbCamera, VideoSink server)
     {
         usbCamera.setResolution(CameraConstants.resolution[0],
@@ -20,6 +37,18 @@ public class CameraSubsystem extends SubsystemBase
         server.getProperty("compression").set(CameraConstants.compression);
     }
 
+    /**
+     * The {@code switchCamera} method is to set the source between one of the
+     * two {@link UsbCamera}'s that can be used on the robot
+     * 
+     * It will only attempt to change the source if
+     * {@link CameraConstants#USING_TWO_CAMERAS} is <b>true</b>.
+     * 
+     * @param server
+     *            The camera server ({@link VideoSink}) to switch the source
+     * @param desiredSource
+     *            The desired source ({@link UsbCamera}) to display
+     */
     public void switchCamera(VideoSink server, UsbCamera desiredSource)
     {
         if (CameraConstants.USING_TWO_CAMERAS)
