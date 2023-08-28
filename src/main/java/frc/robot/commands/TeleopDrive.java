@@ -14,6 +14,11 @@ public class TeleopDrive extends CommandBase
 	private DoubleSupplier leftDrive;
 	private DoubleSupplier rightDrive;
 
+	/**
+	 * Constructor
+	 * 
+	 * Sets {@link TankSubsystem} and the two drive {@link DoubleSupplier}'s
+	 */
 	public TeleopDrive(TankSubsystem tankSubsystem, DoubleSupplier leftDrive,
 			DoubleSupplier rightDrive)
 		{
@@ -26,7 +31,8 @@ public class TeleopDrive extends CommandBase
 	@Override
 	public void execute()
 	{
-		tankSubsystem.drive(leftDrive.getAsDouble(), rightDrive.getAsDouble());
+		tankSubsystem.driveStraight(leftDrive.getAsDouble(),
+				rightDrive.getAsDouble());
 	}
 
 	}
