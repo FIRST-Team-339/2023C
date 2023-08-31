@@ -8,8 +8,13 @@ public class AutoDriveForwardOnly extends AutonomousBase
     /* Subsystem */
     private TankSubsystem tankSubsystem;
 
-    /* Encoders Reset Boolean */
-    private boolean encodersReset = false;
+    /* Auto Command State */
+    private enum AutoCommandState
+        {
+        RESET_ENCODERS, DRIVE,
+        }
+
+    private AutoCommandState autoCommandState = AutoCommandState.RESET_ENCODERS;
 
     /* Drive Distance */
     public static int driveDistance = 120;
@@ -29,16 +34,19 @@ public class AutoDriveForwardOnly extends AutonomousBase
     @Override
     public void executeAutonomous()
     {
-        if (encodersReset == true)
+        switch (autoCommandState)
             {
-            tankSubsystem.driveStraightInches(driveDistance,
-                    AutonomousConstants.AUTO_MAX_DRIVE_SPEED, false);
-            }
-        else
-            {
-            tankSubsystem.driveStraightInches(driveDistance,
-                    AutonomousConstants.AUTO_MAX_DRIVE_SPEED, true);
-            encodersReset = true;
+            case RESET_ENCODERS:
+                tankSubsystem.driveStraightInches(driveDistance,
+                        AutonomousConstants.AUTO_MAX_DRIVE_SPEED, true);
+
+                autoCommandState = AutoCommandState.DRIVE;
+                break;
+            case DRIVE:
+                tankSubsystem.driveStraightInches(driveDistance,
+                        AutonomousConstants.AUTO_MAX_DRIVE_SPEED, false);
+            default:
+                break;
             }
     }
     }
