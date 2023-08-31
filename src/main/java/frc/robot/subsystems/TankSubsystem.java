@@ -136,7 +136,8 @@ public class TankSubsystem extends SubsystemBase
 	 * @param resetEncoders
 	 *            If you want to reset the encoders (usually this would be done
 	 *            once per Command)
-	 * @return
+	 * @return If any of the encoders (left or right) have passed the
+	 *         {@code distance} provided
 	 */
 	public boolean driveStraightInches(double distance, double speed,
 			boolean resetEncoders)
