@@ -16,6 +16,7 @@ public class GearShift extends CommandBase
 
     public GearShift(TankSubsystem tankSubsystem, GearUpOrDown gearState)
         {
+            addRequirements(tankSubsystem);
             this.tankSubsystem = tankSubsystem;
             this.gearState = gearState;
         }
@@ -41,6 +42,7 @@ public class GearShift extends CommandBase
                 break;
             }
 
+        // Cancels the command as it has ran
         cancel();
     }
 
