@@ -8,7 +8,7 @@ import frc.robot.subsystems.CameraSubsystem;
 
 public class Camera extends CommandBase
     {
-    /* Subsystem */
+    /* Camera Subsystem */
     private CameraSubsystem cameraSubsystem;
 
     /* USB Cameras */
@@ -20,6 +20,7 @@ public class Camera extends CommandBase
 
     public Camera(CameraSubsystem cameraSubsystem, boolean usingTwoCameras)
         {
+            addRequirements(cameraSubsystem);
             this.cameraSubsystem = cameraSubsystem;
 
             this.camera0 = CameraServer.startAutomaticCapture("Camera", 0);
@@ -53,7 +54,7 @@ public class Camera extends CommandBase
             cameraSubsystem.switchCamera(server, camera0);
             }
 
-        // Ends the command, as we have switched cameras
+        // Cancels the command as it has ran
         cancel();
     }
     }
