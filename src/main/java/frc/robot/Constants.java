@@ -42,6 +42,7 @@ public final class Constants
         public static final int AUTO_DELAY_POT_ID = 2;
 
         /* Autonomous Delay */
+        public static final double AUTO_MIN_DELAY_SECONDS = 0.0;
         public static final double AUTO_MAX_DELAY_SECONDS = 5.0;
 
         /* Autonomous Drive Constants */
@@ -60,14 +61,41 @@ public final class Constants
     public static final class CameraConstants
         {
         /* SOFTWARE PROPERTIES */
-        public static final boolean USING_TWO_CAMERAS = true;
+        public static final boolean USING_TWO_CAMERAS = false;
+
+        /* BUTTON IDS */
         public static final int SWITCH_CAMERA_BUTTON_ID = 10;
-        public static final double SWITCH_CAMERA_DEBOUNCE_TIME = 0.25;
 
         /* CAMERA PROPERTIES */
-        public static final int[] resolution =
+        public static final int[] RESOLUTION =
             { 340, 240 };
-        public static final int framesPerSecond = 20;
-        public static final int compression = 60;
+        public static final int FRAMES_PER_SECOND = 20;
+        public static final int COMPRESSION = 60;
+        }
+
+    public static final class ArmAndClawConstants
+        {
+        /* HARDWARE */
+        public static final int ARM_RAISE_MOTOR_ID = 21;
+        public static final int ARM_LENGTH_MOTOR_ID = 23;
+        public static final int ARM_RAISE_PISTON_FWD_PORT = 2;
+        public static final int ARM_RAISE_PISTON_REV_PORT = 3;
+        public static final int CLAW_PISTON_FWD_PORT = 6;
+        public static final int CLAW_PISTON_REV_PORT = 7;
+        public static final int ARM_TOP_LIMIT_SWITCH_ID = 6;
+        public static final int ARM_BOTTOM_LIMIT_SWITCH_ID = 0;
+
+        /* BUTTON IDS */
+        public static final int ARM_RAISE_BUTTON_ID = 1;
+        public static final int CLAW_TRIGGER_BUTTON_ID = 1;
+
+        /* Speed Multipliers */
+        public static final double ARM_RAISE_SPEED_MULITPLIER = 0.75;
+        }
+
+    public static final class DashboardConstants
+        {
+        /* Battery Level */
+        public static final double LOW_BATTERY_LEVEL = 11.5;
         }
     }
