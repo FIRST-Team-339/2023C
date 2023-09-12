@@ -31,10 +31,10 @@ public class CameraSubsystem extends SubsystemBase
      */
     public void setCameraValues(UsbCamera usbCamera, VideoSink server)
     {
-        usbCamera.setResolution(CameraConstants.resolution[0],
-                CameraConstants.resolution[1]);
-        usbCamera.setFPS(CameraConstants.framesPerSecond);
-        server.getProperty("compression").set(CameraConstants.compression);
+        usbCamera.setResolution(CameraConstants.RESOLUTION[0],
+                CameraConstants.RESOLUTION[1]);
+        usbCamera.setFPS(CameraConstants.FRAMES_PER_SECOND);
+        server.getProperty("compression").set(CameraConstants.COMPRESSION);
     }
 
     /**
