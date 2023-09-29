@@ -19,9 +19,9 @@ import frc.robot.subsystems.CameraSubsystem;
 import frc.robot.subsystems.ClawSubsystem;
 import frc.robot.subsystems.DashboardSubsystem;
 import frc.robot.subsystems.TankSubsystem;
+import frc.robot.subsystems.DashboardSubsystem.AutonomousMode;
 
-public class RobotContainer
-        {
+public class RobotContainer {
         /* Joysticks */
         private CommandJoystick leftDriverJoystick = new CommandJoystick(
                         JoystickConstants.LEFT_DRIVER_JOYSTICK_ID);
@@ -72,44 +72,46 @@ public class RobotContainer
         private ClawTrigger clawTriggerCommand = new ClawTrigger(clawSubsystem,
                         dashboardSubsystem);
 
-        public RobotContainer()
-                {
-                        /* Initialize Camera */
-                        rightOperatorJoystick.button(
-                                        CameraConstants.SWITCH_CAMERA_BUTTON_ID)
-                                        .onTrue(cameraCommand);
+        public RobotContainer() {
+                /* Initialize Teleop Drive & Tank Subsystem w/ gears */
+                tankSubsystem.setDefaultCommand(teleopDriveCommand);
+                rightDriverJoystick.button(
+                                DriveConstants.GEAR_UP_BUTTON_ID)
+                                .onTrue(gearUpCommand);
+                leftDriverJoystick.button(
+                                DriveConstants.GEAR_DOWN_BUTTON_ID)
+                                .onTrue(gearDownCommand);
 
-                        /* Initialize Teleop Drive & Tank Subsystem w/ gears */
-                        tankSubsystem.setDefaultCommand(teleopDriveCommand);
-                        rightDriverJoystick.button(
-                                        DriveConstants.GEAR_UP_BUTTON_ID)
-                                        .onTrue(gearUpCommand);
-                        leftDriverJoystick.button(
-                                        DriveConstants.GEAR_DOWN_BUTTON_ID)
-                                        .onTrue(gearDownCommand);
+                /* Initialize Arm & Claw components */
+                armRaiseMotorSubsystem.setDefaultCommand(
+                                armRaiseMotorCommand);
+                armLengthMotorSubsystem.setDefaultCommand(
+                                armLengthMotorCommand);
 
-                        /* Initialize Arm & Claw components */
-                        armRaiseMotorSubsystem.setDefaultCommand(
-                                        armRaiseMotorCommand);
-                        armLengthMotorSubsystem.setDefaultCommand(
-                                        armLengthMotorCommand);
-                        leftOperatorJoystick.button(
-                                        ArmAndClawConstants.ARM_RAISE_BUTTON_ID)
-                                        .onTrue(armRaisePistonCommand);
-                        rightOperatorJoystick.button(
-                                        ArmAndClawConstants.CLAW_TRIGGER_BUTTON_ID)
-                                        .onTrue(clawTriggerCommand);
-                }
+                /* Configure Button Bindings */
+                configureButtonBindings();
+        }
 
-        public AutonomousCommandBase getAutonomousCommand()
-        {
+        private void configureButtonBindings() {
+                /* Configure Camera Buttons */
+                rightOperatorJoystick
+                                .button(CameraConstants.SWITCH_CAMERA_BUTTON_ID)
+                                .onTrue(cameraCommand);
+
+                /* Configure Arm & Claw Buttons */
+                leftOperatorJoystick
+                                .button(ArmAndClawConstants.ARM_RAISE_BUTTON_ID)
+                                .onTrue(armRaisePistonCommand);
+                rightOperatorJoystick.button(
+                                ArmAndClawConstants.CLAW_TRIGGER_BUTTON_ID)
+                                .onTrue(clawTriggerCommand);
+        }
+
+        public AutonomousCommandBase getAutonomousCommand() {
                 AutonomousCommandBase autonomousCommand = null;
-                // TankSubsystem autonomousTankSubsystem = new TankSubsystem();
 
-                if (useAutoSwitch.isOn())
-                        {
-                        switch (sixPositionAutoSwitch.getPosition())
-                                {
+                if (useAutoSwitch.isOn()) {
+                        switch (sixPositionAutoSwitch.getPosition()) {
                                 /*
                                  * Position 1
                                  * 
@@ -122,8 +124,11 @@ public class RobotContainer
                                  * Then stop.
                                  */
                                 case 0:
+                                        dashboardSubsystem.updateAutoIndicator(AutonomousMode.Mode1);
                                         autonomousCommand = new AutoDriveForwardOnly(
                                                         tankSubsystem,
+                                                        armPistonSubsystem,
+                                                        clawSubsystem,
                                                         teleopDriveCommand);
                                         break;
                                 /*
@@ -141,38 +146,46 @@ public class RobotContainer
                                  * Then stop.
                                  */
                                 case 1:
+                                        dashboardSubsystem.updateAutoIndicator(AutonomousMode.Mode2);
                                         autonomousCommand = new AutoDriveTurnDrive(
                                                         tankSubsystem,
+                                                        armPistonSubsystem,
+                                                        clawSubsystem,
                                                         teleopDriveCommand);
                                         break;
                                 /*
                                  * Position 3
                                  */
                                 case 2:
+                                        dashboardSubsystem.updateAutoIndicator(AutonomousMode.Mode3);
                                         autonomousCommand = new AutoDriveOverChargingStation(
                                                         tankSubsystem,
+                                                        armPistonSubsystem,
+                                                        clawSubsystem,
                                                         teleopDriveCommand);
                                         break;
                                 /*
                                  * Position 4
                                  */
                                 case 3:
+                                        dashboardSubsystem.updateAutoIndicator(AutonomousMode.Mode4);
                                         autonomousCommand = new AutoDropCubeDriveForward(
                                                         tankSubsystem,
+                                                        armPistonSubsystem,
+                                                        clawSubsystem,
                                                         teleopDriveCommand);
                                         break;
                                 default:
                                         System.out.println(
                                                         "No Autonomous Selected");
                                         break;
-                                }
                         }
+                }
 
-                if (autonomousCommand != null)
-                        {
+                if (autonomousCommand != null) {
                         autonomousCommand.addRequirements(tankSubsystem);
                         tankSubsystem.setDefaultCommand(autonomousCommand);
-                        }
+                }
                 return autonomousCommand;
         }
-        }
+}
