@@ -10,19 +10,19 @@ import frc.robot.enums.DriveGears;
  * Anything declared here should be prefaced with {@code public static final}
  * </p>
  */
-public final class Constants
-    {
-    public static final class DriveConstants
-        {
+public final class Constants {
+    public static final class DriveConstants {
         /* MOTOR IDs */
         public static final int TOP_LEFT_MOTOR_ID = 9;
         public static final int BOTTOM_LEFT_MOTOR_ID = 8;
         public static final int TOP_RIGHT_MOTOR_ID = 19;
         public static final int BOTTOM_RIGHT_MOTOR_ID = 16;
 
+        /* Encoder */
+        public static final double DISTANCE_PER_PULSE = 0.00100001;
+
         /* MOTOR CONTROLLER GROUPS */
-        public static final boolean[] MOTOR_CONTROLLER_GROUPS_INVERTED =
-            { true, false };
+        public static final boolean[] MOTOR_CONTROLLER_GROUPS_INVERTED = { false, true };
 
         /* JOYSTICK DEADBAND */
         public static final double JOYSTICK_DEADBAND = 0.05;
@@ -31,14 +31,17 @@ public final class Constants
         public static final DriveGears defaultGear = DriveGears.GEAR1;
         public static final int GEAR_DOWN_BUTTON_ID = 1;
         public static final int GEAR_UP_BUTTON_ID = 1;
-        }
 
-    public static final class AutonomousConstants
-        {
+        /* Rate Limits */
+        public static final double ACCELERATION_RATE_LIMIT = 1.0;
+        public static final double BRAKE_RATE_LIMIT = 0.8;
+        public static final double DRIVE_STRAIGHT_CORRECTION_DELTA = 0.1;
+    }
+
+    public static final class AutonomousConstants {
         /* Autonomous Hardware IDs */
         public static final int USE_AUTO_SWITCH_ID = 10;
-        public static final int[] AUTO_SIX_POSITION_SWITCH_IDS =
-            { 15, 13, 14, 18, 16, 17 };
+        public static final int[] AUTO_SIX_POSITION_SWITCH_IDS = { 15, 13, 14, 18, 16, 17 };
         public static final int AUTO_DELAY_POT_ID = 2;
 
         /* Autonomous Delay */
@@ -47,19 +50,17 @@ public final class Constants
 
         /* Autonomous Drive Constants */
         public static final double AUTO_MAX_DRIVE_SPEED = 0.3;
-        }
+    }
 
-    public static final class JoystickConstants
-        {
+    public static final class JoystickConstants {
         /* JOYSTICK IDs */
         public static final int LEFT_DRIVER_JOYSTICK_ID = 0;
         public static final int RIGHT_DRIVER_JOYSTICK_ID = 1;
         public static final int LEFT_OPERATOR_JOYSTICK_ID = 2;
         public static final int RIGHT_OPERATOR_JOYSTICK_ID = 3;
-        }
+    }
 
-    public static final class CameraConstants
-        {
+    public static final class CameraConstants {
         /* SOFTWARE PROPERTIES */
         public static final boolean USING_TWO_CAMERAS = false;
 
@@ -67,14 +68,12 @@ public final class Constants
         public static final int SWITCH_CAMERA_BUTTON_ID = 10;
 
         /* CAMERA PROPERTIES */
-        public static final int[] RESOLUTION =
-            { 340, 240 };
+        public static final int[] RESOLUTION = { 340, 240 };
         public static final int FRAMES_PER_SECOND = 20;
         public static final int COMPRESSION = 60;
-        }
+    }
 
-    public static final class ArmAndClawConstants
-        {
+    public static final class ArmAndClawConstants {
         /* HARDWARE */
         public static final int ARM_RAISE_MOTOR_ID = 21;
         public static final int ARM_LENGTH_MOTOR_ID = 23;
@@ -91,11 +90,13 @@ public final class Constants
 
         /* Speed Multipliers */
         public static final double ARM_RAISE_SPEED_MULITPLIER = 0.75;
-        }
 
-    public static final class DashboardConstants
-        {
+        /* Arm Hold Speeds */
+        public static final double ARM_RAISE_HOLD_SPEED = 0.02;
+    }
+
+    public static final class DashboardConstants {
         /* Battery Level */
         public static final double LOW_BATTERY_LEVEL = 11.5;
-        }
     }
+}
