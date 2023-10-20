@@ -31,7 +31,7 @@ public class ArmRaiseMotorSubsystem extends SubsystemBase
      * 
      * @param speed
      *            The motor duty cycle as a ratio. Value should be between -1.0
-     *            and 1.0.
+     *            and 1.0. If the speed is 
      */
     public void setSpeed(double speed)
     {

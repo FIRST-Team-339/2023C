@@ -6,19 +6,18 @@ import frc.robot.subsystems.TankSubsystem;
 import frc.robot.Constants.*;
 import frc.robot.commands.TeleopDrive;
 
-public class AutoDriveForwardOnly extends AutonomousCommandBase {
+public class AutoDriveOverChargingStation extends AutonomousCommandBase {
     /* Auto Command State */
     private enum AutoCommandState {
-        RESET_ENCODERS, DRIVE, BRAKE
+        RESET_ENCODERS, DRIVE, HOLD
     }
 
     private AutoCommandState autoCommandState = AutoCommandState.RESET_ENCODERS;
 
-    /*
-     * Drive Distance, supposed to be 120 inches but it is shaved off a little to
-     * account for braking
-     */
-    public static int driveDistance = 110;
+    /* Drive Variables */
+    public int driveDistance = 92;
+    public double driveSpeed = 0.22;
+    public double chargingStationHoldSpeed = -0.05;
 
     /**
      * Constructor
@@ -27,7 +26,7 @@ public class AutoDriveForwardOnly extends AutonomousCommandBase {
      * Sets {@link TankSubsystem}
      * </p>
      */
-    public AutoDriveForwardOnly(TankSubsystem tankSubsystem, ArmPistonSubsystem armPistonSubsystem,
+    public AutoDriveOverChargingStation(TankSubsystem tankSubsystem, ArmPistonSubsystem armPistonSubsystem,
             ClawSubsystem clawSubsystem, TeleopDrive teleopDrive) {
         super(tankSubsystem, armPistonSubsystem, clawSubsystem, teleopDrive);
     }
@@ -41,14 +40,15 @@ public class AutoDriveForwardOnly extends AutonomousCommandBase {
                 autoCommandState = AutoCommandState.DRIVE;
                 break;
             case DRIVE:
-                if (tankSubsystem.accelerate(1.0 /* This is at the Auto Max Drive Speed */) == true) {
-                    if (tankSubsystem.driveStraightInches(driveDistance, 1.0, false) == true) {
-                        autoCommandState = AutoCommandState.BRAKE;
-                    }
+                if (tankSubsystem.driveStraightInches(driveDistance,
+                        AutonomousConstants.AUTO_MAX_DRIVE_SPEED,
+                        false) == true) {
+                    autoCommandState = AutoCommandState.HOLD;
                 }
+            case HOLD:
+                tankSubsystem.driveStraight(chargingStationHoldSpeed, true);
+            default:
                 break;
-            case BRAKE:
-                tankSubsystem.brake();
         }
     }
 }

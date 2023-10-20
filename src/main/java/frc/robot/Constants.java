@@ -93,6 +93,9 @@ public final class Constants {
 
         /* Arm Hold Speeds */
         public static final double ARM_RAISE_HOLD_SPEED = 0.02;
+
+        /* JOYSTICK DEADBAND */
+        public static final double JOYSTICK_DEADBAND = 0.05;
     }
 
     public static final class DashboardConstants {
