@@ -45,8 +45,10 @@ public class TeleopDrive extends CommandBase {
 
 	@Override
 	public void execute() {
-		double smoothLeftSpeed = accelerationLimiter.calculate(-leftDrive.getAsDouble());
-		double smoothRightSpeed = accelerationLimiter.calculate(-rightDrive.getAsDouble());
+		// double smoothLeftSpeed = accelerationLimiter.calculate(-leftDrive.getAsDouble());
+		// double smoothRightSpeed = accelerationLimiter.calculate(-rightDrive.getAsDouble());
+		double smoothLeftSpeed = -leftDrive.getAsDouble();
+		double smoothRightSpeed = -rightDrive.getAsDouble();
 
 		tankSubsystem.drive(smoothLeftSpeed,
 				smoothRightSpeed);

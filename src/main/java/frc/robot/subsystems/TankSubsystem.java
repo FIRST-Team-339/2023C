@@ -267,6 +267,8 @@ public class TankSubsystem extends SubsystemBase {
 	public boolean shiftGearBy(int shiftBy) {
 		DriveGears newGear = DriveGears
 				.getFromId(currentGear.getId() + shiftBy);
+				System.out.println("shiftby: " + shiftBy);
+				System.out.println("found gear id: " + newGear.getId());
 		if (newGear != null) {
 			setGear(newGear);
 			currentGear = newGear;
@@ -292,6 +294,9 @@ public class TankSubsystem extends SubsystemBase {
 	 *         shifted to a gear that doesn't exist)
 	 */
 	public boolean shiftGearDown() {
+		if (getCurrentGear().getId() == 0) {
+			return false;
+		}
 		return shiftGearBy(-1);
 	}
 

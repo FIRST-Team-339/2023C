@@ -35,6 +35,10 @@ public class ArmRaiseMotorSubsystem extends SubsystemBase
      */
     public void setSpeed(double speed)
     {
-        armLengthMotor.set(speed);
+        if (speed > ArmAndClawConstants.ARM_RAISE_HOLD_SPEED || speed < -ArmAndClawConstants.ARM_RAISE_HOLD_SPEED) {
+            armLengthMotor.set(speed);
+        } else {
+            armLengthMotor.set(ArmAndClawConstants.ARM_RAISE_HOLD_SPEED);
+        }
     }
     }
